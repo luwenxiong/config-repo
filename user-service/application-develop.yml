@@ -1,0 +1,68 @@
+env:
+  msg: ------------------------ 本次应用启动读取了GIT - DEVELOP的配置信息 ------------------------
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+  datasource:
+    name: dev
+    url: jdbc:mysql://192.168.51.230:3306/production_operation_user?allowMultiQueries=true&useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8
+    username: root
+    password: meimima
+    # druid
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 100
+    maxIdle: 50
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 10
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+  aop:
+    auto: true
+    proxy-target-class: true
+
+mybatis:
+  mapper-locations: classpath:mapping/**/*.xml
+
+idataapi:
+  key: HQARzzivPfpneCSXqbRQjx4spBPQwgvcVABOY59GyPmIeCtiB9QF125FEK8OBbrI
+  path: https://api01.bitspaceman.com/org/idataapi
+
+qiniu:
+  access: ZpkKkC6RtjkJvbYgky5Iq3bLXksQCebjN3NheCli
+  secretKey: IKsORLdNhvfMlHpaB4hzjOtAIVNRPMop67O58BMe
+  bucketName: pcgg123
+
+alicloud:
+  idcard:
+    appcode: 241758e7b4b54e4881e0aae686a6d2a6
+    host: http://idcard3.market.alicloudapi.com
+    path: /idcardAudit
+
+# SnowflakeIdWorker配置
+workerId: 1
+datacenterId: 2
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+management:
+  security:
+    enabled: false	# 是否开启actuator安全认证
+
+#txmanager地址
+tm:
+  manager:
+    url: http://192.168.51.213:8004/tx/manager/
